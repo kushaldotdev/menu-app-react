@@ -68,13 +68,6 @@
   }
 }
 
-/* @supports (scrollbar-color: auto) {
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--border)) transparent;
-  }
-} */
-
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -87,6 +80,11 @@
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--border));
   border-radius: 9999px;
+  visibility: hidden;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
 }
 
 ::-webkit-scrollbar-thumb:hover {

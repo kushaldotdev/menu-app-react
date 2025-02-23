@@ -1,19 +1,16 @@
 import { lazy, Suspense, useState } from "react";
-
 import { ModeToggle } from "../utility/mode-toggle";
 import { Button } from "./ui/button";
-
 import NavCartButton from "@/components/Navbar/NavCartButton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import NavbarDesktop from "./Navbar/NavbarDesktop";
 import NavbarMobile from "./Navbar/NavbarMobile";
-
 import { LogIn } from "lucide-react";
-
 import { useLoginModal } from "@/context/LoginModalContext";
 const LoginModal = lazy(() => import("./Navbar/LoginModal"));
 
 export default function NavBar() {
+  const location = useLocation();
   const [isMobileNavOpen, setMobileNavIsOpen] = useState(false);
   const { isLoginModalOpen, openLoginModal, closeLoginModal } = useLoginModal();
 

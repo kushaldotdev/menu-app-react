@@ -20,15 +20,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/menu",
-    element: (
-      <Suspense fallback={<LoadingSpinner />}>
-        <Home />
-      </Suspense>
-    ),
-  },
-  {
-    path: "/menu/:category",
+    path: "menu/:category?",
     element: (
       <Suspense fallback={<LoadingSpinner />}>
         <Home />

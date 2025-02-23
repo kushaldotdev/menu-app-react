@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function ContactForm() {
   const formSchema = z.object({
@@ -41,11 +41,11 @@ export default function ContactForm() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 3000));
       // Throw simulated error
-      reset();
-      throw new Error("Submission failed. Please try again.");
+      console.log(data);
+      // reset();
+      // throw new Error("Submission failed. Please try again.");
 
       // Actual submission logic would go here
-      // console.log(data);
     } catch (error) {
       setError("root", {
         type: "manual",
@@ -104,7 +104,7 @@ export default function ContactForm() {
           {isSubmitting ? (
             <>
               <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-              Sending...
+              Loading...
             </>
           ) : (
             "Send Message"

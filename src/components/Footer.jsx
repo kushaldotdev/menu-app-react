@@ -1,4 +1,5 @@
-import { Facebook, Twitter, Instagram } from "lucide-react";
+import { FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { FiFacebook } from "react-icons/fi";
 
 export default function Footer({ className = "" }) {
   return (
@@ -24,13 +25,13 @@ export default function Footer({ className = "" }) {
         <div className="flex items-center space-x-4">
           <div className="flex space-x-3">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <Facebook className="w-5 h-5 text-foreground hover:text-primary" />
+              <FiFacebook className="w-5 h-5 text-foreground hover:text-primary" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <Twitter className="w-5 h-5 text-foreground hover:text-primary" />
+              <FaXTwitter className="w-5 h-5 text-foreground hover:text-primary" />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <Instagram className="w-5 h-5 text-foreground hover:text-primary" />
+              <FaInstagram className="w-5 h-5 text-foreground hover:text-primary" />
             </a>
           </div>
         </div>
