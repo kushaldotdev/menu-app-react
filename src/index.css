@@ -61,8 +61,9 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -89,4 +90,10 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
+}
+
+[data-sonner-toaster][dir="ltr"] [data-close-button="true"] {
+  right: 0 !important;
+  left: unset !important;
+  transform: translate(8px, -8px) !important;
 }

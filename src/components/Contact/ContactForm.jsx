@@ -1,11 +1,13 @@
+import api from "@/api/axiosInstance";
+import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
 
 export default function ContactForm() {
   const formSchema = z.object({
@@ -38,19 +40,25 @@ export default function ContactForm() {
 
   const onSubmit = async (data) => {
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      // Throw simulated error
-      console.log(data);
-      // reset();
-      // throw new Error("Submission failed. Please try again.");
-
-      // Actual submission logic would go here
+      const feedback = await api.post("/feedback", data);
+      reset();
+      toast.success("Feedback has been received!", {
+        description: "Thank you for writing to us.",
+      });
     } catch (error) {
       setError("root", {
-        type: "manual",
+        type: "server",
         message: error.message || "Failed to send message. Please try again.",
       });
+
+      toast.error("Message not sent!", {
+        description: error.response?.data?.message,
+      });
+
+      // setError("serverErrorMessage", {
+      //   type: "manual",
+      //   message: error.response?.data?.message || "",
+      // });
     }
   };
 
